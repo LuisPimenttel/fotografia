@@ -1,10 +1,131 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Mi sitio</title>
-  </head>
-  <body>
-    <h1>Hola, mundo desde GitHub Pages</h1>
-    <p>Este es mi sitio web.</p>
-  </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador Antes/Después</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to bottom right, #111, #333);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            aspect-ratio: 3 / 2;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        .image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+        .after-image {
+            width: 50%;
+            overflow: hidden;
+        }
+        .slider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: #00FFAA;
+            cursor: ew-resize;
+            transform: translateX(-50%);
+            transition: background 0.3s;
+        }
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            margin: 10px auto 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Comparador Antes / Después</h1>
+    <div class="labels">
+        <span>Antes</span>
+        <span>Después</span>
+    </div>
+    <div class="container">
+        <div class="image-wrapper">
+            <img src="Antes.png" alt="Antes">
+        </div>
+        <div class="image-wrapper after-image">
+            <img src="Despues.png" alt="Después">
+        </div>
+        <div class="slider"></div>
+    </div>
+    <div class="footer">Hecho por Luis Pimenttel</div>
+
+    <script>
+        const slider = document.querySelector('.slider');
+        const afterImage = document.querySelector('.after-image');
+
+        let isDragging = false;
+
+        slider.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            let rect = slider.parentElement.getBoundingClientRect();
+            let posX = e.clientX - rect.left;
+            posX = Math.max(0, Math.min(rect.width, posX));
+            slider.style.left = posX + 'px';
+            afterImage.style.width = posX + 'px';
+        });
+
+        // Soporte para pantallas táctiles
+        slider.addEventListener('touchstart', () => isDragging = true);
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            let touch = e.touches[0];
+            let rect = slider.parentElement.getBoundingClientRect();
+            let posX = touch.clientX - rect.left;
+            posX = Math.max(0, Math.min(rect.width, posX));
+            slider.style.left = posX + 'px';
+            afterImage.style.width = posX + 'px';
+        });
+    </script>
+</body>
 </html>
+
