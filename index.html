@@ -70,7 +70,34 @@
 </head>
 <body>
   <header>
-    <h1>El Paquete de Presets Más Poderoso Jamás Creado</h1>
+    <h1>El Paquete de Presets Más Poderoso Jamás Creado</h1><h2>Antes y Después</h2>
+<div style="max-width: 800px; margin: auto;">
+  <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+  <link href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css" rel="stylesheet"/>
+
+  <div id="juxtapose" class="juxtapose" style="height: 500px;"></div>
+
+  <script>
+    new juxtapose.JXSlider('#juxtapose',
+      [
+        {
+          src: 'antes.jpg',
+          label: 'Antes'
+        },
+        {
+          src: 'despues.jpg',
+          label: 'Después'
+        }
+      ],
+      {
+        animate: true,
+        showLabels: true,
+        showCredits: false,
+        makeResponsive: true
+      });
+  </script>
+</div>
+
     <iframe frameborder="0" class="juxtapose" width="100%" height="800" src="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=5d5a8816-157a-11f0-9397-d93975fe8866"></iframe>
     <p>
       Inspirado en la <span class="highlight">luz de Rembrandt</span>, los <span class="highlight">colores de Picasso</span> y la <span class="highlight">esencia cinematográfica</span> de los grandes directores de la historia.
