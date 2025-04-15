@@ -1,5 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Comparación Antes y Después</title>
+
+    <link href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css" rel="stylesheet">
+    <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+
+    <style>
+      body {
+        background-color: #0d0d0d;
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+        padding: 2rem;
+      }
+      .juxtapose {
+        max-width: 800px;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Antes y Después</h1>
+
+    <div id="juxtapose" class="juxtapose" style="height: 500px;"></div>
+
+    <script>
+      new juxtapose.JXSlider('#juxtapose',
+        [
+          {
+            src: https://i.postimg.cc/ZRwXn4jf/Monta-a-sin-preset-vermeer-4x.jpg,
+            label: 'Antes'
+          },
+          {
+            src: https://i.postimg.cc/s2cNH3FV/Monta-a-con-preset-vermeer-4x.jpg,
+            label: 'Después'
+          }
+        ],
+        {
+          animate: true,
+          showLabels: true,
+          showCredits: false,
+          makeResponsive: true
+        });
+    </script>
+
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
